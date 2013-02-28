@@ -21,7 +21,36 @@ class UrbanTerrorServer
     {
         $response = $this->_getRawResponse();
         $lines = explode("\n", $response);
-        $data = explode("\\",$lines[1]);
+        $serverData = explode("\\", $lines[1]);
+
+
+        $serverConfigs = array();
+        for ($i = 1; $i < count($serverData); $i = $i + 2) {
+            $key = strtolower(trim($serverData[$i]));
+            $val = trim($serverData[$i + 1]);
+            $serverConfigs[$key] = $val;
+        }
+
+        $players = array();
+        for ($i = 2; $i < count($lines); $i++) {
+
+            if (!empty($lines[$i])) {
+
+                $playerInfo = explode(' ', $lines[$i]);
+                $players[] = array(
+                    "name" => str_replace('"', '', $playerInfo[2]),
+                    "score" => $playerInfo[0],
+                    "ping" => $playerInfo[1]
+
+                );
+            }
+        }
+
+        $data = array(
+            'server_configs' => $serverConfigs,
+            'players' => $players
+        );
+
 
         return $data;
     }
