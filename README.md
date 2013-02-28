@@ -7,6 +7,8 @@ Just another UrT Server Monitor with html5 and JS extras!
 
 The web application tracks Urban Terror game servers and updates player and server data in a fixed interval. If you're using a modern web browser which has html5 desktop notification support, it can also send desktop notifications on certain events. 
 
+<b>Demo:</b> <a href="http://urtweb.rs.af.cm/">http://urtweb.rs.af.cm</a> 
+
 ### How can it help? 
 
 If you're a passionate gamer, you probably check your favorite servers every now and then for quick games. With this application, you can just keep it open in a tab and it'll tell you when someone enters the defined servers. 
