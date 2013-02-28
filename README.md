@@ -17,7 +17,7 @@ Never again leave your browser to check your favorite Urban Terror game servers.
 
 The application uses simple PHP in the backend. You need a web server that supports PHP. To fetch the server data, the application also requires outbound socket connections. Some shared hosting could have such outbound connections disabled. Please check with your host in such cases. 
 
-For most people, just dropping the folder somewhere on your host should work. 
+For most people, just dropping the folder somewhere on your host should work. Edit config.php to add the servers you want to track.
 
 ### How can I report a bug / request a feature? 
 
