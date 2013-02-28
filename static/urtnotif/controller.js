@@ -12,6 +12,7 @@ function UrbanTerrorController($scope, $http) {
 
         $http.post("urt.php", $.param(data), { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
             .success(function (response) {
+                var server_data = configured_server_list[response.id]
                 var server = {
                     'name': server_data['name'],
                     'host': server_data['host'],
