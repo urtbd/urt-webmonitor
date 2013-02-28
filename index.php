@@ -60,6 +60,7 @@ require_once 'config.php';
             </a>
             <a class="brand">Urban Terror Server Monitor</a>
 
+
             <p class="pull-right">
                 <a class="btn btn-success" id="start_mon" ng-click="startMonitoring()">Start Monitoring</a>
                 <a class="btn btn-danger" id="stop_mon" ng-click="stopMonitoring()">Stop Monitoring</a>
@@ -102,6 +103,12 @@ require_once 'config.php';
         </div>
     </div>
 </div>
+
+<br/><br/>
+
+<footer>
+    <center><a target="_blank" href="https://github.com/masnun/urtweb">Fork on Github!</a></center>
+</footer>
 
 </body>
 </html>
