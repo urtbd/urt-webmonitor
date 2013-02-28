@@ -22,6 +22,13 @@ require_once 'config.php';
     <script src="static/urtnotif/angular.min.js" type="text/javascript"></script>
     <script src="static/urtnotif/controller.js" type="text/javascript"></script>
 
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("a#start_mon").hide();
+        })
+
+    </script>
+
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -36,7 +43,7 @@ require_once 'config.php';
 
 
 </head>
-<body>
+<body ng-controller="UrbanTerrorController">
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container-fluid">
@@ -47,36 +54,42 @@ require_once 'config.php';
             </a>
             <a class="brand">Urban Terror Server Monitor</a>
 
-
+            <p class="pull-right">
+                <a class="btn btn-success" id="start_mon" ng-click="startMonitoring()">Start Monitoring</a>
+                <a class="btn btn-danger" id="stop_mon" ng-click="stopMonitoring()">Stop Monitoring</a>
+            </p>
         </div>
     </div>
 </div>
 
-<div class="container" ng-controller="UrbanTerrorController">
+<div class="container">
     <div class="row">
-        <div class="span12" ng-repeat="server in server_list">
-            <h1>{{ server.name }}</h1>
-            <br/>
-            <span class="label label-inverse">Map</span> {{ server.configs.mapname }} &nbsp; &nbsp;
-            <span class="label label-inverse">Host</span> {{ server.host }} &nbsp; &nbsp;
-            <span class="label label-inverse">Port</span> {{ server.port }} &nbsp; &nbsp;
-            <br/><br/>
-            <table class="table table-bordered table-condensed">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Score</th>
-                    <th>Ping</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr ng-repeat="player in server.players">
-                    <td>{{ player.name }}</td>
-                    <td>{{ player.score }}</td>
-                    <td>{{ player.ping }}</td>
-                </tr>
-                </tbody>
-            </table>
+        <div class="span12">
+            <div ng-repeat="server in server_list">
+                <h1>{{ server.name }}</h1>
+                <br/>
+                <span class="label label-inverse">Map</span> {{ server.configs.mapname }} &nbsp; &nbsp;
+                <span class="label label-inverse">Host</span> {{ server.host }} &nbsp; &nbsp;
+                <span class="label label-inverse">Port</span> {{ server.port }} &nbsp; &nbsp;
+                <a class="btn" ng-click="updateServer(server)">Update</a>
+                <br/><br/>
+                <table class="table table-bordered table-condensed">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Ping</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="player in server.players">
+                        <td>{{ player.name }}</td>
+                        <td>{{ player.score }}</td>
+                        <td>{{ player.ping }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
