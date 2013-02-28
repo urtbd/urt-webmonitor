@@ -65,7 +65,7 @@ require_once 'config.php';
                 <a class="btn btn-danger" id="stop_mon" ng-click="stopMonitoring()">Stop Monitoring</a>
 
                 <a class="btn btn-success" id="start_dn" ng-click="startDN()">Enable Desktop Notification</a>
-                <a class="btn btn-danger" id="stop_dn" ng-click="stopMonitoring()">Disable Desktop Notification</a>
+                <a class="btn btn-danger" id="stop_dn" ng-click="stopDN()">Disable Desktop Notification</a>
             </p>
         </div>
     </div>
