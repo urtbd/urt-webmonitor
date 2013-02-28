@@ -25,8 +25,30 @@ function UrbanTerrorController($scope, $http) {
         $("a#start_mon").show();
     }
 
+    $scope.startDN = function () {
+        enableDesktopNotifications();
+    }
+
 
     // Helpers
+
+    function enableDesktopNotifications() {
+        if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
+            sendDesktopNotification('Desktop Notification has been enabled!');
+        } else {
+            window.webkitNotifications.requestPermission();
+        }
+    }
+
+    function sendDesktopNotification(message) {
+        var notif = window.webkitNotifications.createNotification('', 'Urban Terror Server Monitor', message);
+        notif.ondisplay = function () {
+            setTimeout(function () {
+                notif.cancel();
+            }, 5000);
+        }
+        notif.show();
+    }
 
     function startMonitoring() {
         $scope.timer = setTimeout(function () {

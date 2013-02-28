@@ -25,6 +25,12 @@ require_once 'config.php';
     <script type="text/javascript">
         $(document).ready(function () {
             $("a#start_mon").hide();
+            $("a#stop_dn").hide();
+
+            if (!window.webkitNotifications) {
+                $("a#start_dn").hide();
+            }
+
         })
 
     </script>
@@ -57,6 +63,9 @@ require_once 'config.php';
             <p class="pull-right">
                 <a class="btn btn-success" id="start_mon" ng-click="startMonitoring()">Start Monitoring</a>
                 <a class="btn btn-danger" id="stop_mon" ng-click="stopMonitoring()">Stop Monitoring</a>
+
+                <a class="btn btn-success" id="start_dn" ng-click="startDN()">Enable Desktop Notification</a>
+                <a class="btn btn-danger" id="stop_dn" ng-click="stopMonitoring()">Disable Desktop Notification</a>
             </p>
         </div>
     </div>
