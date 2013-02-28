@@ -37,8 +37,14 @@ class UrbanTerrorServer
             if (!empty($lines[$i])) {
 
                 $playerInfo = explode(' ', $lines[$i]);
+
+                $name = "";
+                for ($j = 2; $j < count($playerInfo); $j++) {
+                    $name .= " {$playerInfo[$j]}";
+                }
+
                 $players[] = array(
-                    "name" => str_replace('"', '', $playerInfo[2]),
+                    "name" => str_replace('"', '', $name),
                     "score" => $playerInfo[0],
                     "ping" => $playerInfo[1]
 
