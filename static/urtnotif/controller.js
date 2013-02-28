@@ -30,8 +30,8 @@ function UrbanTerrorController($scope, $http) {
     }
 
     $scope.stopDN = function () {
-        $scope.desktop_notification = false;
         sendDesktopNotification('Urban Terror Server Monitor', 'Desktop Notification has been disabled!');
+        $scope.desktop_notification = false;
         $("a#stop_dn").hide();
         $("a#start_dn").show();
     }
@@ -41,23 +41,26 @@ function UrbanTerrorController($scope, $http) {
 
     function enableDesktopNotifications() {
         if (window.webkitNotifications.checkPermission() == 0) { // 0 is PERMISSION_ALLOWED
-            sendDesktopNotification('Urban Terror Server Monitor', 'Desktop Notification has been enabled!');
             $scope.desktop_notification = true;
             $("a#start_dn").hide();
             $("a#stop_dn").show();
+            sendDesktopNotification('Urban Terror Server Monitor', 'Desktop Notification has been enabled!');
         } else {
             window.webkitNotifications.requestPermission();
         }
     }
 
     function sendDesktopNotification(title, message) {
-        var notif = window.webkitNotifications.createNotification('', title, message);
-        notif.ondisplay = function () {
-            setTimeout(function () {
-                notif.cancel();
-            }, 5000);
+
+        if ($scope.desktop_notification) {
+            var notif = window.webkitNotifications.createNotification('', title, message);
+            notif.ondisplay = function () {
+                setTimeout(function () {
+                    notif.cancel();
+                }, 5000);
+            }
+            notif.show();
         }
-        notif.show();
     }
 
     function startMonitoring() {
@@ -79,7 +82,30 @@ function UrbanTerrorController($scope, $http) {
         var data = {"host": server['host'], "port": server['port'], "id": server['id']};
         $http.post("status.php", $.param(data), { headers: { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'}})
             .success(function (response) {
+
+                var current_players = [];
+                for (x in server.players) {
+                    current_players.push(server.players[x].name);
+                }
+
                 server.players = response.data.players;
+
+                var new_players = [];
+                for (x in server.players) {
+                    if (current_players.indexOf(server.players[x].name) == -1) {
+                        new_players.push(server.players[x]);
+                    }
+                }
+
+                if (new_players.length > 0) {
+                    if (new_players.length > 1) {
+                        sendDesktopNotification(server.name, new_players.length + " new players entered " + server.name)
+                    } else {
+                        sendDesktopNotification(server.name, new_players[0].name + " entered " + server.name)
+                    }
+                }
+
+
                 server.configs = response.data.server_configs;
             })
     }
