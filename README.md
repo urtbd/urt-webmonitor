@@ -11,7 +11,7 @@ The web application tracks Urban Terror game servers and updates player and serv
 
 ### How can it help? 
 
-If you're a passionate gamer, you probably check your favorite servers every now and then for quick games. With this application, you can just keep it open in a tab and it'll tell you when someone enters the defined servers. 
+Never again leave your browser to check your favorite Urban Terror game servers. Keep the application open in a tab and let it do the job for you!
 
 ### How do I install it? 
 
