@@ -8,7 +8,7 @@ $servers = array(
     array(
         "name" => "UrTBD Public Server",
         "host" => "urtbd.com",
-        "port" => 27960
+        "port" => 1111
     ),
     array(
         "name" => "UrTBD Mixed Server",
