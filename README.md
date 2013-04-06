@@ -1,4 +1,4 @@
-# Urt Web Monitor 
+# UrT Web Monitor 
 
 Just another UrT Server Monitor with html5 and JS extras!
 
