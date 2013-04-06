@@ -1,4 +1,4 @@
-# Urban Terror Server Monitor 
+# Urt Web Monitor 
 
 Just another UrT Server Monitor with html5 and JS extras!
 
@@ -7,7 +7,7 @@ Just another UrT Server Monitor with html5 and JS extras!
 
 The web application tracks Urban Terror game servers and updates player and server data in a fixed interval. If you're using a modern web browser which has html5 desktop notification support, it can also send desktop notifications on certain events. 
 
-<b>Demo:</b> <a href="http://urtweb.rs.af.cm/">http://urtweb.rs.af.cm</a> 
+<b>Demo:</b> <a href="http://urtweb.rs.af.cm/">http://urtweb.rs.af.cm</a> (The demo is hosted on AppFog and because of their extremely volatile service, it can be down time to time. We shall soon move it to our own hosted environment for better uptime)
 
 ### How can it help? 
 
@@ -21,5 +21,5 @@ For most people, just dropping the folder somewhere on your host should work. Ed
 
 ### How can I report a bug / request a feature? 
 
-Please report any issues or feature requests on Github - <a href="https://github.com/masnun/urtweb/issues">https://github.com/masnun/urtweb/issues</a> :) 
+Please report any issues or feature requests on Github - <a href="https://github.com/urtbd/urt-webmonitor/issues">https://github.com/urtbd/urt-webmonitor/issues</a> :) 
 
