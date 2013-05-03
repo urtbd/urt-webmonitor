@@ -78,6 +78,7 @@ class UrbanTerrorServer
         if (socket_recv($sock, $reply, 2045, MSG_WAITALL) === FALSE) {
             throw new Exception(socket_strerror(socket_last_error()));
         } else {
+            socket_close($sock);
             return $reply;
         }
 
