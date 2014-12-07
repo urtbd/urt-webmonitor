@@ -68,6 +68,8 @@ class UrbanTerrorServer
             throw new Exception(socket_strerror(socket_last_error()));
         }
 
+        socket_set_option($sock, SOL_SOCKET, SO_RCVTIMEO, array('sec' => 1, 'usec' => 0));
+        socket_set_option($sock, SOL_SOCKET, SO_SNDTIMEO, array('sec' => 1, 'usec' => 0));
 
         // Send the status query
         if (!socket_sendto($sock, $this->queryMessage, strlen($this->queryMessage), 0, $this->host, $this->port)) {
